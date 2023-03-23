@@ -1,1 +1,78 @@
-VisualElement {}
+.button_default {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(51, 51, 51);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    align-items: center;
+    justify-content: center;
+    transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
+    flex-direction: row;
+}
+
+.button_hover:hover {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(92, 92, 92);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    align-items: center;
+    justify-content: center;
+    transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
+}
+
+.button_pressed:active {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(71, 71, 71);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    align-items: center;
+    justify-content: center;
+    transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
+}
