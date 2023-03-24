@@ -95,7 +95,7 @@ MonoBehaviour:
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
-  m_LastLoadedLayoutName: LayoutUnity
+  m_LastLoadedLayoutName: 
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52

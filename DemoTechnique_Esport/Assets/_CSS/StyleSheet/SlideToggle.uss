@@ -1,0 +1,89 @@
+___Toggle___ {
+}
+
+.slide-toggle__input {
+    background-color: rgb(77, 77, 77);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    overflow: visible;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-right-color: var(--unity-colors-slider_thumb-border);
+    border-top-color: var(--unity-colors-slider_thumb-border);
+    border-bottom-color: var(--unity-colors-slider_thumb-border);
+    margin-top: 0;
+    border-left-color: var(--unity-colors-slider_thumb-border);
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 100s;
+    flex-direction: column;
+    align-items: flex-start;
+    translate: 0 0;
+    flex-grow: 1;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    justify-content: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.slide-toggle__input-knob {
+    height: 20px;
+    width: 20px;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    top: 0;
+    transition-property: translate, background-color;
+    transition-duration: 0.5s, 0.5s;
+    translate: -1.5px 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-color: var(--unity-colors-slider_thumb-border);
+    border-right-color: var(--unity-colors-slider_thumb-border);
+    border-top-color: var(--unity-colors-slider_thumb-border);
+    border-bottom-color: var(--unity-colors-slider_thumb-border);
+    right: auto;
+    left: 0;
+    flex-grow: 0;
+    align-items: stretch;
+}
+
+.slide-toggle__input--checked {
+    background-color: rgb(0, 217, 178);
+    translate: 0 0;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in-out;
+}
+
+.slide-toggle__input--checked:hover {
+    background-color: rgb(0, 174, 142);
+    translate: 0 0;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in-out;
+}
+
+.slide-toggle__input--checked:active {
+    background-color: rgb(0, 196, 161);
+    translate: 0 0;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    transition-duration: 100ms;
+}
+
+.slide-toggle__input--checked > .slide-toggle__input-knob {
+    translate: 10px 0;
+}

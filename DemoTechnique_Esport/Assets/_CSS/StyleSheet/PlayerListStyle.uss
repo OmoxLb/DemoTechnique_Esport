@@ -1,0 +1,28 @@
+.player_list_default {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.player_list_selected:focus {
+    border-left-color: rgba(0, 217, 178, 255);
+    border-right-color: rgba(0, 217, 178, 255);
+    border-top-color: rgba(0, 217, 178, 255);
+    border-bottom-color: rgba(0, 217, 178, 255);
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.player_list_hover:hover {
+}
+
+.player_list_pressed:active {
+}
+
+.player_list_default > .unity-label {
+    -unity-font-definition: initial;
+    -unity-font: url('project://database/Assets/_UI/Typographie/Roboto-Bold.ttf?fileID=12800000&guid=252acee2c89e6cc4a9e8824fd9642f61&type=3#Roboto-Bold');
+}
