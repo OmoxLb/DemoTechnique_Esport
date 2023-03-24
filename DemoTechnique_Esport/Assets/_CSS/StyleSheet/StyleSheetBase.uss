@@ -113,6 +113,7 @@ ___BUTTON___ {
     overflow: visible;
     visibility: visible;
     display: flex;
+    opacity: 1;
 }
 
 ___LABEL___ {

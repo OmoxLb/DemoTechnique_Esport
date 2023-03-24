@@ -11,10 +11,12 @@ using UnityEngine;
 /// id => emplacement dans la liste
 /// </summary>
 [System.Serializable]
-public struct Player
+public class Player
 {
     public string name;
     public int id;
+
+    
 }
 
 /// <summary>
@@ -25,6 +27,8 @@ public struct Player
 [CreateAssetMenu(menuName = "EsportUI/ListPlayer", fileName = "NewListPlayer")]
 public class PlayerList : ScriptableObject
 {
+    public int heightMaxList = 20;
+
     public List<Player> players = new List<Player>();
 
     /// <summary>
@@ -33,11 +37,6 @@ public class PlayerList : ScriptableObject
     private void OnValidate()
     {
         
-    }
-
-    private void OnChangeValue()
-    {
-
     }
 
 }
