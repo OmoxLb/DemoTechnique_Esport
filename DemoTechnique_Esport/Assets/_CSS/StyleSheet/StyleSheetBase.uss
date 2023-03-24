@@ -1,0 +1,161 @@
+___BUTTON___ {
+}
+
+.button_transparent_default {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(51, 51, 51);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    align-items: center;
+    justify-content: center;
+    transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
+    flex-direction: row;
+}
+
+.button_transparent_hover:hover {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(92, 92, 92);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    align-items: center;
+    justify-content: center;
+    transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
+}
+
+.button_pressed_pressed:active {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(71, 71, 71);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    align-items: center;
+    justify-content: center;
+    transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
+}
+
+.button_vert_default {
+    background-color: rgb(0, 217, 178);
+    -unity-font: url('project://database/Assets/_UI/Typographie/Roboto-Bold.ttf?fileID=12800000&guid=252acee2c89e6cc4a9e8824fd9642f61&type=3#Roboto-Bold');
+    -unity-font-definition: initial;
+    -unity-font-style: normal;
+    font-size: 16px;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in-out;
+    color: rgb(0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    text-shadow: 0 0 0 rgb(0, 0, 0);
+}
+
+.button_vert_hover:hover {
+    background-color: rgb(15, 255, 212);
+}
+
+.button_vert_pressed:active {
+    background-color: rgb(0, 168, 138);
+}
+
+.button_vert_disabled:inactive {
+    background-color: rgb(77, 77, 77);
+    overflow: visible;
+    visibility: visible;
+    display: flex;
+}
+
+___LABEL___ {
+}
+
+.Label_Tittle {
+    -unity-font: url('project://database/Assets/_UI/Typographie/Roboto-Bold.ttf?fileID=12800000&guid=252acee2c89e6cc4a9e8824fd9642f61&type=3#Roboto-Bold');
+    -unity-font-style: normal;
+    text-shadow: 0 0 0 rgb(0, 0, 0);
+    -unity-font-definition: initial;
+    font-size: 32px;
+    color: rgb(255, 255, 255);
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.Label_Default {
+    -unity-font: url('project://database/Assets/_UI/Typographie/Roboto-Bold.ttf?fileID=12800000&guid=252acee2c89e6cc4a9e8824fd9642f61&type=3#Roboto-Bold');
+    -unity-font-style: normal;
+    text-shadow: 0 0 0 rgb(0, 0, 0);
+    -unity-font-definition: initial;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-left;
+}
+
+#unity-text-input {
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    padding-left: 9px;
+    padding-right: 8px;
+    padding-top: 9px;
+    padding-bottom: 8px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.animation {
+    transition-duration: 100ms;
+    transition-timing-function: ease-in-out;
+}
