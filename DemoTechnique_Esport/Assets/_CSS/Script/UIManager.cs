@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
@@ -20,7 +22,7 @@ public class UIManager : MonoBehaviour
     private UIDocument _esportUI;
     private VisualElement _rootEsportUI;
 
-    [SerializeField] 
+    [SerializeField]
     [Tooltip("UI Document du visuel representant les donne du joueur")]
     private VisualTreeAsset _playerUI;
 
@@ -35,6 +37,8 @@ public class UIManager : MonoBehaviour
     private Button _removeButton;
     //The InputName for the name of the player
     private TextField _inputName;
+    //The toggle for adding at the top or at the bottom
+
 
 
     #endregion
@@ -57,7 +61,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     #endregion
@@ -75,6 +79,9 @@ public class UIManager : MonoBehaviour
 
     }
 
+
+    #region Button Add/Remove
+
     /// <summary>
     /// Initialze the button for add or remove the list
     /// </summary>
@@ -84,7 +91,7 @@ public class UIManager : MonoBehaviour
 
         _addButton.clickable.clicked += AddValueToList;
 
-        if(string.IsNullOrWhiteSpace(_inputName.value))
+        if (string.IsNullOrWhiteSpace(_inputName.value))
         {
             _addButton.SetEnabled(false);
         }
@@ -98,9 +105,12 @@ public class UIManager : MonoBehaviour
     {
         if (_inputName == null) return;
 
+        //Add to our list
+        _playerList.players.Add(new Player(_inputName.value, _playerList.players.Count));
+        RebuildListView();
+
+        //Reset the name
         _inputName.value = "";
-
-
     }
 
     /// <summary>
@@ -119,6 +129,9 @@ public class UIManager : MonoBehaviour
         });
     }
 
+    #endregion
+
+    #region ListView
 
     /// <summary>
     /// Initialize the list view
@@ -137,6 +150,31 @@ public class UIManager : MonoBehaviour
         _viewPlayerList.makeItem = CreateItemList;
         _viewPlayerList.bindItem = BindListViewItem;
         _viewPlayerList.itemsSource = _playerList.players;
+
+        RebuildListView();
+
+        //Make a reorderable to the list view for drag and drop 
+        _viewPlayerList.reorderable = true;
+
+        //Detect when user change the item in the list
+        _viewPlayerList.itemIndexChanged += ItemIndexChanged;
+
+    }
+
+    /// <summary>
+    /// Rebuild the list and maj the id of all the player in the list
+    /// </summary>
+    private void RebuildListView()
+    {
+        //_playerList.players.Sort(new IComparerListByIndex());
+
+        for (int i = 0; i < _playerList.players.Count; i++)
+        {
+            Debug.Log("id : " + i);
+
+            _playerList.players[i].id = i + 1;
+        }
+
         _viewPlayerList.Rebuild();
     }
 
@@ -149,16 +187,11 @@ public class UIManager : MonoBehaviour
     private VisualElement CreateItemList()
     {
         VisualElement visualElement = _playerUI.CloneTree();
-
-
-        Debug.Log(visualElement);
-
-
         return visualElement;
     }
 
     /// <summary>
-    /// 
+    /// Link the data to the item view in the list
     /// </summary>
     /// <param name="listItem"></param>
     /// <param name="index"></param>
@@ -169,8 +202,22 @@ public class UIManager : MonoBehaviour
 
         textID.text = _playerList.players[index].id.ToString();
         textName.text = _playerList.players[index].name.ToString();
-
     }
+
+    /// <summary>
+    /// When player change the ordrer of the list
+    /// </summary>
+    /// <param name="previousIndex"></param>
+    /// <param name="newIndex"></param>
+    private void ItemIndexChanged(int previousIndex, int newIndex)
+    {
+        _playerList.players[previousIndex].id = newIndex + 1;
+        _playerList.players[newIndex].id = previousIndex + 1;
+
+        RebuildListView();
+    }
+
+    #endregion
 
     #endregion
 }
