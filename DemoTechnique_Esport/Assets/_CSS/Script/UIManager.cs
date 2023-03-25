@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
     [Tooltip("Scriptable object contenant les datas des players")]
     private PlayerList _playerList;
 
+    [Header("Component In UIDocument")]
     //Ui element contains list of player
     private ListView _viewPlayerList;
     //Button for add or remove player
@@ -37,8 +38,8 @@ public class UIManager : MonoBehaviour
     private Button _removeButton;
     //The InputName for the name of the player
     private TextField _inputName;
-    //The toggle for adding at the top or at the bottom
-
+    //The text of the number of participation
+    private Label _limitParticipantLabel;
 
 
     #endregion
@@ -73,10 +74,10 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void Initialize()
     {
+        SetLabel();
         SetInputName();
         SetButtonList();
         SetListView();
-
     }
 
 
@@ -95,6 +96,13 @@ public class UIManager : MonoBehaviour
         {
             _addButton.SetEnabled(false);
         }
+
+        _removeButton = _rootEsportUI.Q<Button>("RemoveList");
+
+        _removeButton.clickable.clicked += RemoveValueToList;
+
+        //Disable, user don't selection object at the start
+        _removeButton.SetEnabled(false);
     }
 
 
@@ -106,12 +114,34 @@ public class UIManager : MonoBehaviour
         if (_inputName == null) return;
 
         //Add to our list
-        _playerList.players.Add(new Player(_inputName.value, _playerList.players.Count));
-        RebuildListView();
+        //if (_playerList.players.Count - 1 <= _playerList.heightMaxList)
+        {
+            _playerList.players.Add(new Player(_inputName.value, _playerList.players.Count));
+            RebuildListView();
+        }
 
         //Reset the name
         _inputName.value = "";
     }
+
+    /// <summary>
+    /// Remove a value to the list
+    /// </summary>
+    private void RemoveValueToList()
+    {
+        // get the selecteed index
+        int selectedIndex = _viewPlayerList.selectedIndex;
+
+        // check if one element is enabled
+        if (selectedIndex >= 0)
+        {
+            // Retirer l'élément de la liste
+            _playerList.players.RemoveAt(selectedIndex);
+            RebuildListView();
+        }
+    }
+
+    #endregion
 
     /// <summary>
     /// Set the input name and the event link
@@ -129,7 +159,13 @@ public class UIManager : MonoBehaviour
         });
     }
 
-    #endregion
+    private void SetLabel()
+    {
+        _limitParticipantLabel = _rootEsportUI.Q<Label>("LimitParticipant");
+
+        _limitParticipantLabel.text = _playerList.players.Count + " / " + _playerList.heightMaxList;
+    }
+
 
     #region ListView
 
@@ -143,10 +179,7 @@ public class UIManager : MonoBehaviour
         _viewPlayerList = _rootEsportUI.Q<ListView>("PlayerListView");
         _viewPlayerList.fixedItemHeight = _playerList.heightMaxList;
 
-
-        //Appear a scroll bar to the list view
-        _viewPlayerList.horizontalScrollingEnabled = true;
-
+        //When item is add, execute this methods to implements the visual element and maj the data
         _viewPlayerList.makeItem = CreateItemList;
         _viewPlayerList.bindItem = BindListViewItem;
         _viewPlayerList.itemsSource = _playerList.players;
@@ -158,6 +191,7 @@ public class UIManager : MonoBehaviour
 
         //Detect when user change the item in the list
         _viewPlayerList.itemIndexChanged += ItemIndexChanged;
+        _viewPlayerList.onSelectionChange += OnSelectionChanged;
 
     }
 
@@ -167,6 +201,9 @@ public class UIManager : MonoBehaviour
     private void RebuildListView()
     {
         //_playerList.players.Sort(new IComparerListByIndex());
+
+        _limitParticipantLabel.text = _playerList.players.Count + " / " + _playerList.heightMaxList;
+
 
         for (int i = 0; i < _playerList.players.Count; i++)
         {
@@ -215,6 +252,20 @@ public class UIManager : MonoBehaviour
         _playerList.players[newIndex].id = previousIndex + 1;
 
         RebuildListView();
+    }
+
+    /// <summary>
+    /// When the user change the selection on the list view
+    /// </summary>
+    /// <param name="selectedItems"></param>
+    private void OnSelectionChanged(IEnumerable<object> selectedItems)
+    {
+        // Check if an object is selected, disable the remove button if not
+        if (selectedItems != null && selectedItems.Any())
+            _removeButton.SetEnabled(true);
+        else
+            _removeButton.SetEnabled(false);
+
     }
 
     #endregion
