@@ -116,6 +116,26 @@ ___BUTTON___ {
     opacity: 1;
 }
 
+.button_red_default {
+    flex-grow: 0;
+    flex-shrink: 1;
+    width: 170px;
+    background-color: rgba(255, 57, 93, 255);
+    -unity-font: url('project://database/Assets/_UI/Typographie/Roboto-Bold.ttf?fileID=12800000&guid=252acee2c89e6cc4a9e8824fd9642f61&type=3#Roboto-Bold');
+    -unity-text-align: middle-center;
+    color: rgba(0, 0, 0, 255);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    font-size: 16px;
+    -unity-font-style: bold;
+}
+
 ___LABEL___ {
 }
 
@@ -131,7 +151,7 @@ ___LABEL___ {
 }
 
 .Label_Default {
-    -unity-font: url('project://database/Assets/_UI/Typographie/Roboto-Bold.ttf?fileID=12800000&guid=252acee2c89e6cc4a9e8824fd9642f61&type=3#Roboto-Bold');
+    -unity-font: url('project://database/Assets/_UI/Typographie/Roboto-Medium.ttf?fileID=12800000&guid=ab201a0d179b5474ca8ea6548c703f85&type=3#Roboto-Medium');
     -unity-font-style: normal;
     text-shadow: 0 0 0 rgb(0, 0, 0);
     -unity-font-definition: initial;
@@ -154,9 +174,48 @@ ___LABEL___ {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     background-color: rgba(0, 0, 0, 0);
+    transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
 }
 
 .animation {
-    transition-duration: 100ms;
     transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
+}
+
+___SCROLLBAR___ {
+}
+
+___PROGRESSBAR___ {
+}
+
+.unity-progress-bar__background {
+    background-color: rgba(77, 77, 77, 255);
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    justify-content: space-around;
+    align-items: stretch;
+    height: 8px;
+    max-height: none;
+}
+
+.unity-progress-bar__progress {
+    background-color: rgba(0, 217, 178, 255);
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    align-items: stretch;
+    justify-content: space-around;
+    max-height: none;
 }
