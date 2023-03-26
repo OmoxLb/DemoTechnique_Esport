@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heightMaxList: 20
   players:
-  - name: Player 1
+  - name: 'Ajout '
     id: 1
   - name: Player 2
     id: 2

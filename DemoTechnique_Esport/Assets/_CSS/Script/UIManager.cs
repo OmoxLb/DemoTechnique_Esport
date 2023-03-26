@@ -31,16 +31,25 @@ public class UIManager : MonoBehaviour
     private PlayerList _playerList;
 
     [Header("Component In UIDocument")]
-    //Ui element contains list of player
+    [Tooltip("Ui element contains list of player")]
     private ListView _viewPlayerList;
-    //Button for add or remove player
+
+    [Tooltip("The Scroll of the ListView")]
+    private ScrollView _scrollViewList;
+
+    [Tooltip("Button for add  player")]
     private Button _addButton;
+
+    [Tooltip("Button for remove player")]
     private Button _removeButton;
-    //The InputName for the name of the player
+
+    [Tooltip("The InputName for the name of the player")]
     private TextField _inputName;
-    //The text of the number of participation
+
+    [Tooltip("The text of the number of participation")]
     private Label _limitParticipantLabel;
-    //Progress bar of the participation
+
+    [Tooltip("Progress bar of the participation")]
     private ProgressBar _progressParticipation;
 
 
@@ -190,6 +199,12 @@ public class UIManager : MonoBehaviour
         //PART LISTE : 
         //Initialize Ui Element :
         _viewPlayerList = _rootEsportUI.Q<ListView>("PlayerListView");
+        _scrollViewList = _rootEsportUI.Q<ScrollView>("");
+
+        //Maj scroll speed (because default is so low)
+        _scrollViewList.verticalPageSize = 10;
+
+
         _viewPlayerList.fixedItemHeight = _playerList.heightMaxList;
 
         //When item is add, execute this methods to implements the visual element and maj the data
