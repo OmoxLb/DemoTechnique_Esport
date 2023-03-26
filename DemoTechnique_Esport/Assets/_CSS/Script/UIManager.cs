@@ -40,6 +40,8 @@ public class UIManager : MonoBehaviour
     private TextField _inputName;
     //The text of the number of participation
     private Label _limitParticipantLabel;
+    //Progress bar of the participation
+    private ProgressBar _progressParticipation;
 
 
     #endregion
@@ -75,6 +77,7 @@ public class UIManager : MonoBehaviour
     private void Initialize()
     {
         SetLabel();
+        SetProgressBar();
         SetInputName();
         SetButtonList();
         SetListView();
@@ -159,11 +162,21 @@ public class UIManager : MonoBehaviour
         });
     }
 
+    /// <summary>
+    /// Set the label that count the actual number of participation
+    /// </summary>
     private void SetLabel()
     {
         _limitParticipantLabel = _rootEsportUI.Q<Label>("LimitParticipant");
 
         _limitParticipantLabel.text = _playerList.players.Count + " / " + _playerList.heightMaxList;
+    }
+
+    private void SetProgressBar()
+    {
+        _progressParticipation = _rootEsportUI.Q<ProgressBar>("ParticipantsBar");
+
+        _progressParticipation.value = _playerList.players.Count * 100 / _playerList.heightMaxList;
     }
 
 
@@ -202,7 +215,9 @@ public class UIManager : MonoBehaviour
     {
         //_playerList.players.Sort(new IComparerListByIndex());
 
+        //Maj Info text and progress bar
         _limitParticipantLabel.text = _playerList.players.Count + " / " + _playerList.heightMaxList;
+        _progressParticipation.value = _playerList.players.Count * 100 / _playerList.heightMaxList;
 
 
         for (int i = 0; i < _playerList.players.Count; i++)
