@@ -1,4 +1,4 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/_CSS/SlideToggle.uss?fileID=7433441132597879392&amp;guid=283e107539d17384489d12cb54574188&amp;type=3#SlideToggle" />
-    <SlideToggle style="flex-grow: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; align-items: stretch; justify-content: space-around; width: 64px; height: 32px;" />
+    <Style src="project://database/Assets/_CSS/StyleSheet/SlideToggle.uss?fileID=7433441132597879392&amp;guid=283e107539d17384489d12cb54574188&amp;type=3#SlideToggle[UNSUPPORTED_IN_UI_BUILDER]" />
+    <SlideToggle name="SlideToggle" value="false" style="flex-grow: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; align-items: stretch; justify-content: space-around; width: 64px; height: 32px;" />
 </ui:UXML>
