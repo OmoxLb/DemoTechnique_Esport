@@ -108,7 +108,7 @@ ___BUTTON___ {
     background-color: rgb(0, 168, 138);
 }
 
-.button_vert_disabled:inactive {
+.button_vert_disabled:disabled {
     background-color: rgb(77, 77, 77);
     overflow: visible;
     visibility: visible;
@@ -120,10 +120,70 @@ ___BUTTON___ {
     flex-grow: 0;
     flex-shrink: 1;
     width: 170px;
-    background-color: rgba(255, 57, 93, 255);
+    background-color: rgb(255, 57, 93);
     -unity-font: url('project://database/Assets/_UI/Typographie/Roboto-Bold.ttf?fileID=12800000&guid=252acee2c89e6cc4a9e8824fd9642f61&type=3#Roboto-Bold');
     -unity-text-align: middle-center;
-    color: rgba(0, 0, 0, 255);
+    color: rgb(0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    font-size: 16px;
+    -unity-font-style: bold;
+}
+
+.button_red_hover:hover {
+    flex-grow: 0;
+    flex-shrink: 1;
+    width: 170px;
+    background-color: rgb(255, 101, 129);
+    -unity-font: url('project://database/Assets/_UI/Typographie/Roboto-Bold.ttf?fileID=12800000&guid=252acee2c89e6cc4a9e8824fd9642f61&type=3#Roboto-Bold');
+    -unity-text-align: middle-center;
+    color: rgb(0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    font-size: 16px;
+    -unity-font-style: bold;
+}
+
+.button_red_pressed:active {
+    flex-grow: 0;
+    flex-shrink: 1;
+    width: 170px;
+    background-color: rgb(216, 51, 81);
+    -unity-font: url('project://database/Assets/_UI/Typographie/Roboto-Bold.ttf?fileID=12800000&guid=252acee2c89e6cc4a9e8824fd9642f61&type=3#Roboto-Bold');
+    -unity-text-align: middle-center;
+    color: rgb(0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    font-size: 16px;
+    -unity-font-style: bold;
+}
+
+.button_red_disabled:disabled {
+    flex-grow: 0;
+    flex-shrink: 1;
+    width: 170px;
+    background-color: rgb(77, 77, 77);
+    -unity-font: url('project://database/Assets/_UI/Typographie/Roboto-Bold.ttf?fileID=12800000&guid=252acee2c89e6cc4a9e8824fd9642f61&type=3#Roboto-Bold');
+    -unity-text-align: middle-center;
+    color: rgb(0, 0, 0);
     border-left-width: 0;
     border-right-width: 0;
     border-top-width: 0;
@@ -160,6 +220,54 @@ ___LABEL___ {
     -unity-text-align: middle-left;
 }
 
+___SCROLLBAR___ {
+}
+
+.unity-scroller__high-button {
+}
+
+___PROGRESSBAR___ {
+}
+
+.unity-progress-bar__background {
+    background-color: rgb(77, 77, 77);
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    justify-content: space-around;
+    align-items: stretch;
+    height: 8px;
+    max-height: none;
+}
+
+.unity-progress-bar__progress {
+    background-color: rgb(0, 217, 178);
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    align-items: stretch;
+    justify-content: space-around;
+    max-height: none;
+}
+
+___OTHER___ {
+}
+
+.animation {
+    transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
+}
+
 #unity-text-input {
     border-left-width: 0;
     border-right-width: 0;
@@ -176,46 +284,4 @@ ___LABEL___ {
     background-color: rgba(0, 0, 0, 0);
     transition-timing-function: ease-in-out;
     transition-duration: 100ms;
-}
-
-.animation {
-    transition-timing-function: ease-in-out;
-    transition-duration: 100ms;
-}
-
-___SCROLLBAR___ {
-}
-
-___PROGRESSBAR___ {
-}
-
-.unity-progress-bar__background {
-    background-color: rgba(77, 77, 77, 255);
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-left-width: 0;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-    justify-content: space-around;
-    align-items: stretch;
-    height: 8px;
-    max-height: none;
-}
-
-.unity-progress-bar__progress {
-    background-color: rgba(0, 217, 178, 255);
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-left-width: 0;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-    align-items: stretch;
-    justify-content: space-around;
-    max-height: none;
 }
