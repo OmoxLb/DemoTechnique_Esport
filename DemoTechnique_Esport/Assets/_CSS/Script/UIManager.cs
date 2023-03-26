@@ -123,17 +123,25 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void AddValueToList()
     {
+        //Safety
         if (_inputName == null) return;
+        if (string.IsNullOrWhiteSpace(_inputName.value)) return;
+
 
         //Add to our list
-        //if (_playerList.players.Count - 1 <= _playerList.heightMaxList)
+        if (_playerList.players.Count < _playerList.heightMaxList)
         {
+            _addButton.SetEnabled(true);
             _playerList.players.Add(new Player(_inputName.value, _playerList.players.Count));
             RebuildListView();
         }
+        else _addButton.SetEnabled(false);
 
-        //Reset the name
+
+        //Reset the name and the button
         _inputName.value = "";
+        _addButton.SetEnabled(false);
+
     }
 
     /// <summary>
@@ -151,6 +159,9 @@ public class UIManager : MonoBehaviour
             _playerList.players.RemoveAt(selectedIndex);
             RebuildListView();
         }
+
+        //Reset the selection of the player
+        _viewPlayerList.selectedIndex = -1;
     }
 
     #endregion
@@ -165,9 +176,21 @@ public class UIManager : MonoBehaviour
         //Disable add button if name input is empty
         _inputName.RegisterValueChangedCallback(evt =>
         {
-            if (string.IsNullOrWhiteSpace(evt.newValue))
+            //Reset the button if
+            if (!string.IsNullOrWhiteSpace(evt.newValue) && _playerList.players.Count < _playerList.heightMaxList)
+                _addButton.SetEnabled(true);
+            else
                 _addButton.SetEnabled(false);
-            else _addButton.SetEnabled(true);
+
+        });
+
+        //Detect if enter is poressed
+        _inputName.RegisterCallback<KeyDownEvent>(evt =>
+        {
+            if (evt.keyCode == KeyCode.Return || evt.keyCode == KeyCode.KeypadEnter)
+            {
+                AddValueToList();
+            }
         });
     }
 
@@ -181,6 +204,9 @@ public class UIManager : MonoBehaviour
         _limitParticipantLabel.text = _playerList.players.Count + " / " + _playerList.heightMaxList;
     }
 
+    /// <summary>
+    /// Set the progress bar of the actual number of participation according to the height max list and the player count
+    /// </summary>
     private void SetProgressBar()
     {
         _progressParticipation = _rootEsportUI.Q<ProgressBar>("ParticipantsBar");
@@ -202,7 +228,7 @@ public class UIManager : MonoBehaviour
         _scrollViewList = _rootEsportUI.Q<ScrollView>("");
 
         //Maj scroll speed (because default is so low)
-        _scrollViewList.verticalPageSize = 10;
+        _scrollViewList.scrollDecelerationRate = 10;
 
 
         _viewPlayerList.fixedItemHeight = _playerList.heightMaxList;
@@ -237,8 +263,6 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < _playerList.players.Count; i++)
         {
-            Debug.Log("id : " + i);
-
             _playerList.players[i].id = i + 1;
         }
 
@@ -267,8 +291,12 @@ public class UIManager : MonoBehaviour
         Label textID = listItem.Q<Label>("ID");
         Label textName = listItem.Q<Label>("Name");
 
+        //Maj the data of the item in players list
         textID.text = _playerList.players[index].id.ToString();
         textName.text = _playerList.players[index].name.ToString();
+
+        //Reset selection
+        listItem.Focus();
     }
 
     /// <summary>

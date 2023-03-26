@@ -4,7 +4,6 @@ using UnityEngine.UIElements;
 //Toggle button from Unity UI Doucmentation UI Element 
 //https://docs.unity3d.com/Manual/UIE-slide-toggle.html
 
-
 // Derives from BaseField<bool> base class. Represents a container for its input part.
 public class SlideToggle : BaseField<bool>
 {
