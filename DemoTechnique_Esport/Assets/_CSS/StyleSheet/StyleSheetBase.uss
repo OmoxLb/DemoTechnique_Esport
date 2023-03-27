@@ -220,6 +220,10 @@ ___LABEL___ {
     -unity-text-align: middle-left;
 }
 
+.Label_Default:disabled {
+    opacity: 0.5;
+}
+
 ___SCROLLBAR___ {
 }
 

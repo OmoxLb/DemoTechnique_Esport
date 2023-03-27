@@ -52,6 +52,15 @@ public class UIManager : MonoBehaviour
     [Tooltip("Progress bar of the participation")]
     private ProgressBar _progressParticipation;
 
+    [Tooltip("Toggle Button for the list")]
+    private SlideToggle _slideToggle;
+
+    [Tooltip("The left text of the Toggle")]
+    private Label _leftText;
+
+    [Tooltip("The right  text of the Toggle")]
+    private Label _rightText;
+
 
     #endregion
 
@@ -85,6 +94,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void Initialize()
     {
+        SetSlideToggle();
         SetLabel();
         SetProgressBar();
         SetInputName();
@@ -132,7 +142,18 @@ public class UIManager : MonoBehaviour
         if (_playerList.players.Count < _playerList.heightMaxList)
         {
             _addButton.SetEnabled(true);
-            _playerList.players.Add(new Player(_inputName.value, _playerList.players.Count));
+
+            //Check if top or bottom of list
+            if (_slideToggle.value)
+            {
+                Debug.Log("Bot");
+                _playerList.players.Add(new Player(_inputName.value, _playerList.players.Count));
+            }
+            else
+            {
+                _playerList.players.Add(new Player(_inputName.value, -1));
+            }
+
             RebuildListView();
         }
         else _addButton.SetEnabled(false);
@@ -162,6 +183,11 @@ public class UIManager : MonoBehaviour
 
         //Reset the selection of the player
         _viewPlayerList.selectedIndex = -1;
+
+        if (_playerList.players.Count == 0)
+            _removeButton.SetEnabled(false);
+        else _removeButton.SetEnabled(true);
+
     }
 
     #endregion
@@ -192,6 +218,27 @@ public class UIManager : MonoBehaviour
                 AddValueToList();
             }
         });
+    }
+
+    /// <summary>
+    /// Set the slide toggle for the list view
+    /// </summary>
+    private void SetSlideToggle()
+    {
+        _slideToggle = _rootEsportUI.Q<SlideToggle>("SlideToggle");
+        _rightText = _rootEsportUI.Q<Label>("RightText");
+        _leftText = _rootEsportUI.Q<Label>("LeftText");
+
+
+
+        _slideToggle.RegisterValueChangedCallback(evt =>
+        {
+            _rightText.SetEnabled(evt.newValue);
+            _leftText.SetEnabled(!evt.newValue);
+        });
+
+        _rightText.SetEnabled(_slideToggle.value);
+        _leftText.SetEnabled(!_slideToggle.value);
     }
 
     /// <summary>
@@ -260,11 +307,13 @@ public class UIManager : MonoBehaviour
         _limitParticipantLabel.text = _playerList.players.Count + " / " + _playerList.heightMaxList;
         _progressParticipation.value = _playerList.players.Count * 100 / _playerList.heightMaxList;
 
+        _playerList.players.Sort(new IComparerListByIndex());
 
         for (int i = 0; i < _playerList.players.Count; i++)
         {
-            _playerList.players[i].id = i + 1;
+            _playerList.players[i].id = i;
         }
+
 
         _viewPlayerList.Rebuild();
     }
@@ -292,7 +341,7 @@ public class UIManager : MonoBehaviour
         Label textName = listItem.Q<Label>("Name");
 
         //Maj the data of the item in players list
-        textID.text = _playerList.players[index].id.ToString();
+        textID.text = (_playerList.players[index].id + 1).ToString();
         textName.text = _playerList.players[index].name.ToString();
 
         //Reset selection
@@ -306,8 +355,8 @@ public class UIManager : MonoBehaviour
     /// <param name="newIndex"></param>
     private void ItemIndexChanged(int previousIndex, int newIndex)
     {
-        _playerList.players[previousIndex].id = newIndex + 1;
-        _playerList.players[newIndex].id = previousIndex + 1;
+        _playerList.players[newIndex].id = newIndex; 
+        _playerList.players[previousIndex].id = previousIndex;
 
         RebuildListView();
     }

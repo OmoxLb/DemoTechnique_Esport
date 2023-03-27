@@ -13,7 +13,7 @@ public class IComparerListByIndex : IComparer<Player>
     /// <returns></returns>
     public int Compare(Player visual1, Player visual2)
     {
-        if (visual1.id > visual2.id)
+        if (visual1.id >= visual2.id)
         {
             return 1;
         }
