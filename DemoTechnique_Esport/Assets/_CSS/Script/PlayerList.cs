@@ -34,6 +34,9 @@ public class PlayerList : ScriptableObject
 {
     public int heightMaxList = 20;
 
+    public string defaultText = "Nouveau participant";
+
+    [Space(5)]
     public List<Player> players = new List<Player>();
 
     /// <summary>
