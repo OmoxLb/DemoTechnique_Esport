@@ -14,43 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heightMaxList: 20
   players:
-  - name: 'Ajout '
+  - name: Test
+    id: 0
+  - name: Top 1
     id: 1
-  - name: Player 2
+  - name: Top4
     id: 2
-  - name: Player 3
+  - name: Nouveau
     id: 3
-  - name: Player 4
+  - name: Top3
     id: 4
-  - name: Player 5
+  - name: Test 2
     id: 5
-  - name: Player 6
+  - name: test
     id: 6
-  - name: Player 7
+  - name: Top 2
     id: 7
-  - name: Player 8
+  - name: Test
     id: 8
-  - name: Player 9
+  - name: Test1
     id: 9
-  - name: Player 10
-    id: 10
-  - name: Player 11
-    id: 11
-  - name: Player 12
-    id: 12
-  - name: Player 13
-    id: 13
-  - name: Player 14
-    id: 14
-  - name: Player 15
-    id: 15
-  - name: Player 16
-    id: 16
-  - name: Player 17
-    id: 17
-  - name: Player 18
-    id: 18
-  - name: Player 19
-    id: 19
-  - name: Player 20
-    id: 20
