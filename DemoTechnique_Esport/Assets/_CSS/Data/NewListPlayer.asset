@@ -13,24 +13,31 @@ MonoBehaviour:
   m_Name: NewListPlayer
   m_EditorClassIdentifier: 
   heightMaxList: 20
+  defaultText: Nouveau participant
   players:
-  - name: Test
+  - name: Ceb
     id: 0
-  - name: Top 1
+  - name: sOAZ
     id: 1
-  - name: Top4
+  - name: ZywOo
     id: 2
-  - name: Nouveau
+  - name: Kaydop
     id: 3
-  - name: Top3
+  - name: Stephano
     id: 4
-  - name: Test 2
+  - name: FairyPeak
     id: 5
-  - name: test
+  - name: ToD
     id: 6
-  - name: Top 2
+  - name: Elky
     id: 7
-  - name: Test
+  - name: HaRts
     id: 8
-  - name: Test1
+  - name: SPANK
     id: 9
+  - name: YellOwStaR
+    id: 10
+  - name: winz
+    id: 11
+  - name: Laige
+    id: 12

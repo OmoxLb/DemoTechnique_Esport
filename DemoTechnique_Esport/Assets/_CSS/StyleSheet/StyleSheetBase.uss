@@ -385,6 +385,7 @@ ___INPUTTEXT___ {
     border-bottom-right-radius: 4px;
 }
 
+
 .unity-text-field:hover {
     background-color: rgb(92, 92, 92);
     border-left-color: rgb(77, 77, 77);

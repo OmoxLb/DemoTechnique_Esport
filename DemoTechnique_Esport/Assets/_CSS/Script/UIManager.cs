@@ -125,6 +125,7 @@ public class UIManager : MonoBehaviour
 
         //Disable, user don't selection object at the start
         _removeButton.SetEnabled(false);
+
     }
 
 
@@ -184,9 +185,7 @@ public class UIManager : MonoBehaviour
         //Reset the selection of the player
         _viewPlayerList.selectedIndex = -1;
 
-        if (_playerList.players.Count == 0)
-            _removeButton.SetEnabled(false);
-        else _removeButton.SetEnabled(true);
+        _removeButton.SetEnabled(false);
 
     }
 
@@ -203,11 +202,12 @@ public class UIManager : MonoBehaviour
         _inputName.RegisterValueChangedCallback(evt =>
         {
             //Reset the button if
-            if (!string.IsNullOrWhiteSpace(evt.newValue) && _playerList.players.Count < _playerList.heightMaxList)
+            //The input field is empty or had default text
+            //If player count is full
+            if (!string.IsNullOrWhiteSpace(evt.newValue) && _playerList.players.Count < _playerList.heightMaxList && _inputName.value != _playerList.defaultText)
                 _addButton.SetEnabled(true);
             else
                 _addButton.SetEnabled(false);
-
         });
 
         //Detect if enter is poressed
@@ -216,6 +216,24 @@ public class UIManager : MonoBehaviour
             if (evt.keyCode == KeyCode.Return || evt.keyCode == KeyCode.KeypadEnter)
             {
                 AddValueToList();
+            }
+        });
+
+        //When player focus the input, change the text if it's empty
+        _inputName.RegisterCallback<FocusInEvent>(evt =>
+        {
+            if (_inputName.value == _playerList.defaultText)
+            {
+                _inputName.value = "";
+            }
+        });
+
+        //when player exit focus, change the text if it's empty
+        _inputName.RegisterCallback<FocusOutEvent>(evt =>
+        {
+            if (string.IsNullOrWhiteSpace(_inputName.value))
+            {
+                _inputName.value = _playerList.defaultText;
             }
         });
     }
@@ -355,7 +373,7 @@ public class UIManager : MonoBehaviour
     /// <param name="newIndex"></param>
     private void ItemIndexChanged(int previousIndex, int newIndex)
     {
-        _playerList.players[newIndex].id = newIndex; 
+        _playerList.players[newIndex].id = newIndex;
         _playerList.players[previousIndex].id = previousIndex;
 
         RebuildListView();
